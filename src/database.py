@@ -2,7 +2,7 @@ from sqlalchemy.ext.declarative import as_declarative
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from src.config import settings, root_path
+from src.config import settings
 
 
 engine = create_async_engine(settings.DATABASE_URL)
