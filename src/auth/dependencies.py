@@ -2,8 +2,8 @@ from datetime import datetime
 from fastapi import Depends, Request
 from jose import jwt, JWTError 
 from src.config import settings
-from src.users.exceptions import ExpiredTokenExeption, IncorrectTokenFormatException, TokenExistFaliedException, UserFaliedException, UserFaliedException2
-from src.users.source import UsersData
+from src.auth.exceptions import ExpiredTokenExeption, IncorrectTokenFormatException, TokenExistFaliedException, UserFaliedException, UserFaliedException2
+from src.auth.repositories import UsersData
 
 def get_token(request: Request):
     token = request.cookies.get("user_token")
@@ -22,7 +22,7 @@ async def get_current_user(token: str = Depends(get_token)):
     user_id: str = payload.get("sub")
     if not user_id:
         raise UserFaliedException
-    user = await UsersData.find_by_id(str(user_id))
+    user = await UsersData.find_by_id(int(user_id))
     if not user:
         raise UserFaliedException2
     return user

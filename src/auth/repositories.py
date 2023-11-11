@@ -1,5 +1,5 @@
 from src.models import Users
-from src.source.base_class import BaseRepo
+from src.BaseRepositories.base_class import BaseRepo
 
 
 class UsersData(BaseRepo):

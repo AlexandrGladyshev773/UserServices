@@ -1,5 +1,5 @@
 from src.models import Users, Posts, Articles
-from src.source.base_class import BaseRepo
+from src.BaseRepositories.base_class import BaseRepo
 from src.database import async_session
 from sqlalchemy import select
 

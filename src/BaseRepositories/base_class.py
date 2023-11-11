@@ -10,7 +10,7 @@ class BaseRepo:
         async with async_session() as session:
             query = select(cls.model).filter_by(id = model_id)
             result = await session.execute(query)
-            return result.mappings().one_or_none()        
+            return result.scalars().one_or_none()        
     
     
     
@@ -19,14 +19,14 @@ class BaseRepo:
         async with async_session() as session:
             query = select(cls.model).filter_by(**filter_by)
             result = await session.execute(query)
-            return result.mappings().one_or_none()       
+            return result.scalars().one_or_none()       
     
     @classmethod
     async def find_all(cls, **filter_by):
         async with async_session() as session:
             query = select(cls.model).filter_by(**filter_by)
             result = await session.execute(query)
-            return result.mappings().all()
+            return result.scalars().all()
         
     @classmethod
     async def add(cls, **data):

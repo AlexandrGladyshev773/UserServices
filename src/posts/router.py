@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 
 from src.models import Users
-from src.users.dependencies import get_current_user
-from src.users.source import UsersData
+from src.auth.dependencies import get_current_user
+from src.posts.source import PostsData
 
 router = APIRouter(
     prefix="/posts",
@@ -11,5 +11,4 @@ router = APIRouter(
 
 @router.get("")
 async def get_posts(user: Users = Depends(get_current_user)):
-    print(user, user.email)
-    # return await UsersData.find_all()
+    return await PostsData.find_all(user_id=1)

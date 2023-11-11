@@ -3,7 +3,7 @@ from jose import jwt
 from passlib.context import CryptContext
 from pydantic import EmailStr
 from src.config import settings
-from src.users.source import UsersData
+from src.auth.repositories import UsersData
 
 pwd_context = CryptContext(schemes=['bcrypt'], deprecated=['auto'])
 
